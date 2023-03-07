@@ -1,30 +1,5 @@
-#!/usr/bin/python
-__author__ = "James Han"
-__email__ = "james.han@yale.edu"
-__copyright__ = "Copyright 2023"
-__license__ = "GPL"
-__version__ = "1.0.0"
-
-### Usage: python hw1.py -i <input file> -s <score file>
-### Example: python hw1.py -i input.txt -s blosum62.txt
-### Note: Smith-Waterman Algorithm
-
-import argparse
 import numpy as np
 import pandas as pd
-
-### This is one way to read in arguments in Python. 
-parser = argparse.ArgumentParser(description='Smith-Waterman Algorithm')
-parser.add_argument('-i', '--input', help='input file', required=True)
-parser.add_argument('-s', '--score', help='score file', required=True)
-parser.add_argument('-o', '--opengap', help='open gap', required=False, default=-2)
-parser.add_argument('-e', '--extgap', help='extension gap', required=False, default=-1)
-parser.add_argument('-r', '--result', help='result file', required=False, default='output.txt')
-args = parser.parse_args()
-
-
-
-### Implement your Smith-Waterman Algorithm
 
 def traceback(score_matrix, direction_matrix): ### Traceback algorithm using final scoring and direction matrix
     alignment = []
@@ -137,6 +112,3 @@ def runSW(input_file, score_file, open_gap, extension_gap, output_file):
         f.write("\nAlignment Results:\n")
         f.write('\n'.join([aligned_seq_1, aligned_markers, aligned_seq_2]))
         f.write('\n')
-
-### Run your Smith-Waterman Algorithm
-runSW(args.input, args.score, args.opengap, args.extgap, args.result)
