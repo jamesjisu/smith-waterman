@@ -81,7 +81,7 @@ def SW(seq_1, seq_2, weight_matrix, open_gap = -2, extension_gap = -1):
         
     
 
-def runSW(input_file, score_file, open_gap, extension_gap, output_file):
+def runSW(input_file, score_file, output_file, open_gap = -2, extension_gap = -1):
     with open(input_file, 'r') as f: 
         seq_1, seq_2 = [x.strip() for x in f.readlines()] ### Read input sequences
 
