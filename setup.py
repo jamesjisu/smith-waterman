@@ -13,6 +13,6 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url='https://github.com/jamesjisu/smith-waterman',
     license='MIT',
-    packages=['smithwaterman'],
+    packages=['smith-waterman'],
     install_requires=['numpy', 'pandas'],
 )
