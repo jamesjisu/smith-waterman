@@ -139,4 +139,4 @@ def runSW(input_file, score_file, open_gap, extension_gap, output_file):
         f.write('\n')
 
 ### Run your Smith-Waterman Algorithm
-runSW(args.input, args.score, args.opengap, args.extgap, args.result)
+# runSW(args.input, args.score, args.opengap, args.extgap, args.result)
