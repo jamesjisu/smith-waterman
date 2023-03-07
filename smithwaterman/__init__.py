@@ -1,1 +1,1 @@
-from .smithwaterman import traceback, runSW
+from .smithwaterman import traceback, runSW, SW

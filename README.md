@@ -8,3 +8,4 @@ The Smith-Waterman algorithm is a dynamic programming approach to the sequence/s
 ### Requirements
 The only packages required to run this script are NumPy and Pandas, which come installed with [Anaconda](https://www.anaconda.com/).
 ### Installation
+To install the package, run 
