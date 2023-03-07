@@ -77,7 +77,7 @@ def SW(seq_1, seq_2, weight_matrix, open_gap = -2, extension_gap = -1):
     aligned_seq_1 += seq_1[alignment[-1][1]:len(seq_1)]
     aligned_seq_2 += seq_2[alignment[-1][0]:len(seq_2)]
 
-    return score_matrix, weight_matrix, aligned_seq_1, aligned_seq_2
+    return score_matrix, direction_matrix, aligned_seq_1, aligned_seq_2
         
     
 
