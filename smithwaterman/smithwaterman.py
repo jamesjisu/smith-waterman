@@ -105,9 +105,15 @@ def runSW(input_file, score_file, output_file, open_gap = -2, extension_gap = -1
     
     for j in range(len(seq_1)): ### j is column number, corresponding to sequence 1
         for i in range(len(seq_2)): ### i is row number, corresponding to sequence 2
-            no_gap, gap_seq1, gap_seq2 = [score_matrix[i,j] + weight_matrix.loc[seq_1[j], seq_2[i]], # score added if no gap is introduced
-                                            np.max(score_matrix[i+1,:j+1] - np.arange(-j * extension_gap - open_gap, -open_gap - 1, extension_gap)), # add a gap in seq_1 (j-indexed), adding penalties for extension and open gaps
-                                            np.max(score_matrix[:i+1,j+1] - np.arange(-i * extension_gap - open_gap, -open_gap - 1, extension_gap))] # add a gap in seq_2 (i-indexed), adding penalties for extension and open gaps
+            if extension_gap == 0:
+                no_gap, gap_seq1, gap_seq2 = [score_matrix[i,j] + weight_matrix.loc[seq_1[j], seq_2[i]], ### Score added if no gap is introduced
+                                                np.max(score_matrix[i+1,:j+1] + open_gap), ### Add a gap in seq_1 (j-indexed), adding penalties for extension and open gaps
+                                                np.max(score_matrix[:i+1,j+1] + open_gap)] ### Add a gap in seq_2 (i-indexed), adding penalties for extension and open gaps
+            
+            else:
+                no_gap, gap_seq1, gap_seq2 = [score_matrix[i,j] + weight_matrix.loc[seq_1[j], seq_2[i]], ### Score added if no gap is introduced
+                                                np.max(score_matrix[i+1,:j+1] - np.arange(-j * extension_gap - open_gap, -open_gap - 1, extension_gap)), ### Add a gap in seq_1 (j-indexed), adding penalties for extension and open gaps
+                                                np.max(score_matrix[:i+1,j+1] - np.arange(-i * extension_gap - open_gap, -open_gap - 1, extension_gap))] ### Add a gap in seq_2 (i-indexed), adding penalties for extension and open gaps
             
             score_matrix[i+1,j+1] = np.max([no_gap, gap_seq1, gap_seq2, 0])
             direction_matrix[i+1, j+1] = np.argmax([no_gap, gap_seq1, gap_seq2, 0])
